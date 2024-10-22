@@ -10,6 +10,7 @@ pipeline {
         stage('1.Terraform init') {
             steps {
                 echo 'terraform init phase'
+                sh 'terraform init -reconfigure'
                 sh 'terraform init'
             }
         }
