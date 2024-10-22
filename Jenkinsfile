@@ -10,7 +10,7 @@ pipeline {
         stage('1.Terraform init') {
             steps {
                 echo 'terraform init phase'
-                sh 'terraform init -reconfigure'
+                //sh 'terraform init -reconfigure'
                 sh 'terraform init'
             }
         }
@@ -37,7 +37,8 @@ pipeline {
                 echo 'Terraform ${params.Deployment_Type} phase'  
                 sh "AWS_REGION=us-west-2 terraform ${params.Deployment_Type} --auto-approve"
                 sh("""scripts/update-kubeconfig.sh""")
-                sh("""scripts/install_helm.sh""") 
+                //sh ("""chmod +x scripts/install_helm.sh""")
+                sh("""sudo /scripts/install_helm.sh""") 
                 }
                 }
         stage ('5. Email Notification') {
