@@ -98,11 +98,11 @@ variable "key_name" {
   default     = "training36"
 }
 
-variable "main-region" {
-  description = "The AWS region to deploy resources"
-  type        = string
-  default     = "us-west-2"
-}
+# variable "main-region" {
+#   description = "The AWS region to deploy resources"
+#   type        = string
+#   default     = "us-west-2"
+# }
 
 variable "security_group_id" {
   description = "The security group ID to attach to the instance"
