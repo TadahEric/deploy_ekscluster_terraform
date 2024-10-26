@@ -180,7 +180,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 
 # Obtain an SSL certificate using Certbot and configure Nginx
-sudo certbot --nginx -d sonarqube.dominionsystem.org --email fusisoft@gmail.com --non-interactive --agree-tos --redirect
+sudo certbot --nginx -d sonarqube.dominionsystem.org --email eric.tadah88t@gmail.com --non-interactive --agree-tos --redirect
 
 # Setup a cron job to automatically renew the certificate
 echo "0 0 * * * /usr/bin/certbot renew --quiet" | sudo tee -a /etc/crontab > /dev/null
