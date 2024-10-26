@@ -29,7 +29,7 @@ resource "aws_db_instance" "postgresql" {
   publicly_accessible    = true
   vpc_security_group_ids = var.db_security_group_id
   db_subnet_group_name   = var.db_subnet_group
-  tags = {
-    Name = "postgresql_db"
+   tags = {
+    Name = "SonarQube PostgreSQL DB"
   }
 }

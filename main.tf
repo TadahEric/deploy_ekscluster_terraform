@@ -91,7 +91,6 @@ resource "aws_instance" "sonarqube" {
   }
 }
 
-
 module "maven-sonarqube-server" {
   source            = "./modules/maven-sonarqube-server"
   ami_id            = var.ami_id
