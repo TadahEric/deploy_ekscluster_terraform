@@ -90,6 +90,6 @@ module "maven-sonarqube-server" {
   db_name              = var.db_name
   db_username          = var.db_username
   db_password          = var.db_password
-  db_subnet_group      = [var.db_subnet_group]
+  db_subnet_group      = var.db_subnet_group
   db_security_group_id = var.db_security_group_id 
 }
