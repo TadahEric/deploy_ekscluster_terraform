@@ -1,6 +1,6 @@
-provider "aws" {
-  region = var.main-region
-}
+# provider "aws" {
+#   region = var.main-region
+# }
 
 resource "aws_instance" "sonarqube" {
   ami                         = var.ami_id
