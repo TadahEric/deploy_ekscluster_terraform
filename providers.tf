@@ -1,6 +1,6 @@
 
 provider "aws" {
-  region = us-west-2
+  region = "us-west-2"
   alias  = "us-west-2"
 }
 
@@ -34,7 +34,7 @@ provider "helm" {
     host                   = module.eks.cluster_endpoint
     cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
     token                  = data.aws_eks_cluster_auth.cluster-auth.token
-    load_config_file       = false
+    #load_config_file       = false
   }
 }
 
