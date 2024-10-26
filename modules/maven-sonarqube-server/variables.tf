@@ -35,7 +35,7 @@ variable "security_group_id" {
 variable "subnet_id" {
   description = "The subnet ID where the instance will be deployed"
   type        = string
-  default = "subnet-05a1d237ea47c7733"
+  default = "05a1d237ea47c7733"
 }
 
 variable "db_name" {
