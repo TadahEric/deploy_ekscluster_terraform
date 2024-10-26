@@ -84,7 +84,7 @@ variable "env_name" {
 variable "ami_id" {
   description = "The AMI ID for the EC2 instance"
   type        = string
-  default = "ami-03c983f9003cb9cd1"
+  default = "ami-0b8c6b923777519db"
 }
 
 variable "instance_type" {
@@ -113,30 +113,36 @@ variable "security_group_id" {
 variable "subnet_id" {
   description = "The subnet ID where the instance will be deployed"
   type        = string
+  default = "subnet-05a1d237ea47c7733"
 }
 
 variable "db_name" {
   description = "The name of the PostgreSQL database"
   type        = string
+  default = "ddsonarqube"
 }
 
 variable "db_username" {
   description = "The username for the PostgreSQL database"
   type        = string
+  default = "ddsonar"
 }
 
 variable "db_password" {
   description = "The password for the PostgreSQL database"
   type        = string
   sensitive   = true
+  default = "Serayah11"
 }
 
 variable "db_security_group_id" {
   description = "The security group ID for the PostgreSQL database"
   type    = list(string)
+  default = ["sg-08832623feec1c320"]
 }
 
 variable "db_subnet_group" {
   description = "The subnet group for the PostgreSQL database"
   type        = string
+  default = "subnet-05a1d237ea47c7733"
 }

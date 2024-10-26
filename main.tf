@@ -78,6 +78,20 @@ module "aws_alb_controller" {
 #   grafana_security_group_id = module.managed_grafana.security_group_id
 # }
 
+resource "aws_instance" "sonarqube" {
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  key_name                    = var.key_name
+  vpc_security_group_ids      = var.security_group_id
+  subnet_id                   = var.subnet_id
+  associate_public_ip_address = true
+  user_data                   = file("${path.module}/maven_sonarqube.sh")
+  tags = {
+    Name = "Maven-Sonarqube-Server"
+  }
+}
+
+
 module "maven-sonarqube-server" {
   source            = "./modules/maven-sonarqube-server"
   ami_id            = var.ami_id
@@ -85,7 +99,7 @@ module "maven-sonarqube-server" {
   key_name          = var.key_name
   security_group_id = var.security_group_id
   subnet_id         = var.subnet_id
-  main-region   = var.main-region
+  #main-region   = var.main-region
   db_name              = var.db_name
   db_username          = var.db_username
   db_password          = var.db_password
