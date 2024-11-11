@@ -147,7 +147,3 @@ variable "db_subnet_group_name" {
   default = "db_subnet_group"
 }
 
-variable "security_group_id" {
-  type    = string
-  default = "sg-07b8b3043804ede33"
-}
