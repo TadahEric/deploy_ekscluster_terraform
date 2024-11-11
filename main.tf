@@ -79,45 +79,18 @@ module "aws_alb_controller" {
 # }
 
 
-# module "maven-sonarqube-server" {
-#   source            = "./modules/maven-sonarqube-server"
-#   ami_id            = var.ami_id
-#   instance_type     = var.instance_type
-#   key_name          = var.key_name
-#   security_group_id = var.security_group_id
-#   subnet_id         = [var.subnet_id]
-#   #main-region   = var.main-region
-#   db_name              = var.db_name
-#   db_username          = var.db_username
-#   db_password          = var.db_password
-#   db_subnet_group      = [var.db_subnet_group]
-#   db_security_group_id = var.db_security_group_id 
-# }
-
 module "maven-sonarqube-server" {
- source                = "./modules/maven-sonarqube-server/sonarqube"
- ami_id            = var.ami_id
- instance_type     = var.instance_type
- key_name          = var.key_name
- security_group_id = var.db.security_group_id
- main_region = var.main_region
+  source            = "./modules/maven-sonarqube-server"
+  ami_id            = var.ami_id
+  instance_type     = var.instance_type
+  key_name          = var.key_name
+  security_group_id = [var.db_security_group_id]
+  subnet_id         = var.subnet_id
+  #main-region   = var.main-region
+  db_name              = var.db_name
+  db_username          = var.db_username
+  db_password          = var.db_password
+  db_subnet_group      = [var.db_subnet_group_name]
+  db_security_group_id = var.db_security_group_id 
 }
 
-resource "aws_db_instance" "postgresql" {
-  identifier             = "postgresql"
-  allocated_storage      = 20
-  engine                 = "postgres"
-  engine_version         = "16"
-  instance_class         = "db.t3.micro"
-  db_name                = var.db_name
-  username               = var.db_username
-  password               = var.db_password
-  parameter_group_name   = "default.postgres16"
-  skip_final_snapshot    = true
-  publicly_accessible    = true
-  vpc_security_group_ids = var.db_security_group_id
-  db_subnet_group_name   = var.db_subnet_group_name
-   tags = {
-    Name = "PostgreSQL DB"
-  }
-}
