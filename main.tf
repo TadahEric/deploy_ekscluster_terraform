@@ -95,7 +95,7 @@ module "aws_alb_controller" {
 # }
 
 module "maven-sonarqube-server" {
- source                = "./modules/maven-sonarqube-server/aws_instance"
+ source                = "./modules/maven-sonarqube-server/sonarqube"
  ami_id            = var.ami_id
  instance_type     = var.instance_type
  key_name          = var.key_name
