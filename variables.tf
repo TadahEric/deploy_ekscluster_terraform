@@ -141,8 +141,8 @@ variable "db_security_group_id" {
   default = ["sg-08832623feec1c320"]
 }
 
-variable "db_subnet_group" {
+variable "db_subnet_group_name" {
   description = "The subnet group for the PostgreSQL database"
   type        = string
-  default = "subnet-05a1d237ea47c7733"
+  default = "db_subnet_group"
 }

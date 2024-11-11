@@ -108,7 +108,7 @@ resource "aws_instance" "sonarqube" {
 }
 
 resource "aws_db_instance" "postgresql" {
-  identifier             = "sonarqube-postgresql"
+  identifier             = "postgresql"
   allocated_storage      = 20
   engine                 = "postgres"
   engine_version         = "16"
@@ -120,8 +120,8 @@ resource "aws_db_instance" "postgresql" {
   skip_final_snapshot    = true
   publicly_accessible    = true
   vpc_security_group_ids = var.db_security_group_id
-  db_subnet_group_name   = [var.db_subnet_group]
+  db_subnet_group_name   = var.db_subnet_group_name
    tags = {
-    Name = "SonarQube PostgreSQL DB"
+    Name = "PostgreSQL DB"
   }
 }
