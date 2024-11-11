@@ -64,4 +64,5 @@ variable "db_security_group_id" {
 variable "db_subnet_group" {
   description = "The subnet group for the PostgreSQL database"
   type        = string
+  default = ["subnet-05a1d237ea47c7733", "subnet-06912fcda224d0ae1"]
 }
