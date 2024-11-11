@@ -28,14 +28,14 @@ variable "key_name" {
 
 variable "security_group_id" {
   description = "The security group ID to attach to the instance"
-  type        = list(string)
-  default = ["sg-08832623feec1c320"]
+  type        = string
+  default = "sg-08832623feec1c320"
 }
 
 variable "subnet_id" {
   description = "The subnet ID where the instance will be deployed"
-  type        = list(string)
-  default = ["05a1d237ea47c7733"]
+  type        = string
+  default = "05a1d237ea47c7733"
 }
 
 variable "db_name" {
@@ -59,6 +59,7 @@ variable "db_password" {
 variable "db_security_group_id" {
   description = "The security group ID for the PostgreSQL database"
   type    = list(string)
+  default = ["sg-08832623feec1c320"]
 }
 
 variable "db_subnet_group" {
