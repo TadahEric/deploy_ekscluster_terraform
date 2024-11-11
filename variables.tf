@@ -106,8 +106,8 @@ variable "key_name" {
 
 variable "security_group_id" {
   description = "The security group ID to attach to the instance"
-  type        = list(string)
-  default = ["sg-08832623feec1c320"]
+  type        = string
+  default = "sg-08832623feec1c320"
 }
 
 variable "subnet_id" {
