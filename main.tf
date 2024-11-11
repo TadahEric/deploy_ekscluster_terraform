@@ -94,17 +94,13 @@ module "aws_alb_controller" {
 #   db_security_group_id = var.db_security_group_id 
 # }
 
-resource "aws_instance" "sonarqube" {
-  ami                         = var.ami_id
-  instance_type               = var.instance_type
-  key_name                    = var.key_name
-  vpc_security_group_ids      = var.security_group_id
-  subnet_id                   = var.subnet_id
-  associate_public_ip_address = true
-  user_data                   = file("${path.module}/maven_sonarqube.sh")
-  tags = {
-    Name = "Maven-Sonarqube-Server"
-  }
+module "maven-sonarqube-server" {
+ source                = "./modules/maven-sonarqube-server/aws_instance"
+ ami_id            = var.ami_id
+ instance_type     = var.instance_type
+ key_name          = var.key_name
+ security_group_id = var.db.security_group_id
+ main_region = var.main_region
 }
 
 resource "aws_db_instance" "postgresql" {
