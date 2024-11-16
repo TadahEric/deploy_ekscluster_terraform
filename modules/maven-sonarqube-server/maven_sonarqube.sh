@@ -158,10 +158,10 @@ sudo apt install certbot python3-certbot-nginx -y
 sudo tee /etc/nginx/sites-available/sonarqube.conf > /dev/null <<EOL
 server {
     listen 80;
-    server_name sonarqube.dominionsystem.org;
+    server_name sonarqube.evolutionsystems.net;
 
     location / {
-        proxy_pass http://localhost:8080;
+        proxy_pass http://localhost:9000;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -180,7 +180,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 
 # Obtain an SSL certificate using Certbot and configure Nginx
-sudo certbot --nginx -d sonarqube.dominionsystem.org --email eric.tadah88t@gmail.com --non-interactive --agree-tos --redirect
+sudo certbot --nginx -d sonarqube.evolutionsystems.org --email eric.tadah88t@gmail.com --non-interactive --agree-tos --redirect
 
 # Setup a cron job to automatically renew the certificate
 echo "0 0 * * * /usr/bin/certbot renew --quiet" | sudo tee -a /etc/crontab > /dev/null
@@ -188,7 +188,7 @@ echo "0 0 * * * /usr/bin/certbot renew --quiet" | sudo tee -a /etc/crontab > /de
 # Restart Nginx to apply SSL configuration
 sudo systemctl restart nginx
 
-echo "sonarqube is now accessible via https://sonarqube.dominionsystem.org"
+echo "sonarqube is now accessible via https://sonarqube.evolutionsystems.org"
 
 
 
